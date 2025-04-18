@@ -21,7 +21,6 @@ function App() {
 
 		fetchData();
 	}, []);
-	console.log('hoge');
 	return (
 		<>
 			<div>
