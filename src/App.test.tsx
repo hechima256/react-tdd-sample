@@ -23,4 +23,10 @@ describe('トップ画面', () => {
 
 		expect(screen.getByText('count is 1')).toBeInTheDocument();
 	});
+
+	it('APIレスポンスが表示されること', async () => {
+		render(<App />);
+		const apiResponse = await screen.findByText('Hello World');
+		expect(apiResponse).toBeInTheDocument();
+	});
 });
