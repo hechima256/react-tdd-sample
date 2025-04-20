@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import reactLogo from './assets/react.svg';
+import { ResourceResponse } from './types/api';
+import viteLogo from '/vite.svg';
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -11,7 +12,7 @@ function App() {
 		const fetchData = async () => {
 			try {
 				const response = await fetch('/resource');
-				const data = await response.json();
+				const data: ResourceResponse = await response.json();
 				setApiResponse(data.text);
 			} catch (error) {
 				console.error('Error fetching data:', error);
