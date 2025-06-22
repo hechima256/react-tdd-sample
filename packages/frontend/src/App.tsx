@@ -1,7 +1,7 @@
+import { ResourceResponse } from '@react-tdd-sample/shared/types';
 import { useEffect, useState } from 'react';
 import './App.css';
 import reactLogo from './assets/react.svg';
-import { ResourceResponse } from './types/api';
 import viteLogo from '/vite.svg';
 
 function App() {
