@@ -1,5 +1,7 @@
 # React TDDサンプル
 
+このリポジトリは、**Todoアプリ**をテスト駆動開発（TDD）で構築するサンプルプロジェクトです。
+
 テスト駆動開発（TDD）の原則に基づいて構築されたReactアプリケーションのサンプルプロジェクトです。TypeScript、Vite、Fastify、およびAPI用モックとしてMSWを使用したモノレポ構成です。
 
 ## 使用技術
@@ -81,7 +83,7 @@ npm run dev
 これにより、フロントエンドとバックエンドの両方の開発サーバーが起動します：
 
 - フロントエンド: [http://localhost:5173](http://localhost:5173)
-- バックエンド: [http://localhost:3000](http://localhost:3000)
+- バックエンド: [http://localhost:3001](http://localhost:3001)
 
 #### 個別パッケージの開発
 
