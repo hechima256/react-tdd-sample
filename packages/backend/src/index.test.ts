@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
+import { buildServer } from './index';
 
-describe('サンプルテスト', () => {
-	it('1 + 1 は 2 になる', () => {
-		expect(1 + 1).toBe(2);
+describe('GET /todos', () => {
+	it('should return 200', async () => {
+		const app = await buildServer();
+		const response = await app.inject({
+			method: 'GET',
+			url: '/todos',
+		});
+		expect(response.statusCode).toBe(200);
 	});
 });
