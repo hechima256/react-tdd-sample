@@ -4,16 +4,16 @@ import swaggerUi from '@fastify/swagger-ui';
 import { ResourceResponse } from '@react-tdd-sample/shared/types';
 import Fastify from 'fastify';
 
-export async function buildServer() {
+export function buildServer() {
 	const app = Fastify({ logger: true });
 
 	// CORS設定
-	await app.register(cors, {
+	app.register(cors, {
 		origin: true,
 	});
 
 	// Swagger設定
-	await app.register(swagger, {
+	app.register(swagger, {
 		swagger: {
 			info: {
 				title: 'React TDD Sample API',
@@ -27,7 +27,7 @@ export async function buildServer() {
 		},
 	});
 
-	await app.register(swaggerUi, {
+	app.register(swaggerUi, {
 		routePrefix: '/docs',
 	});
 
@@ -54,15 +54,14 @@ export async function buildServer() {
 
 // サーバーを直接起動する場合だけlisten
 if (import.meta.main) {
-	buildServer().then(app => {
-		app.listen({ port: 3001, host: '0.0.0.0' })
-			.then(() => {
-				console.log('🚀 Fastifyサーバーがポート3001で起動しました');
-				console.log('📚 APIドキュメント: http://localhost:3001/docs');
-			})
-			.catch(err => {
-				app.log.error(err);
-				process.exit(1);
-			});
-	});
+	const app = buildServer();
+	app.listen({ port: 3001, host: '0.0.0.0' })
+		.then(() => {
+			console.log('🚀 Fastifyサーバーがポート3001で起動しました');
+			console.log('📚 APIドキュメント: http://localhost:3001/docs');
+		})
+		.catch(err => {
+			app.log.error(err);
+			process.exit(1);
+		});
 }
