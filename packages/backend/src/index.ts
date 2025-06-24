@@ -4,16 +4,16 @@ import swaggerUi from '@fastify/swagger-ui';
 import { ResourceResponse } from '@react-tdd-sample/shared/types';
 import Fastify from 'fastify';
 
-export function buildServer() {
+export async function buildServer() {
 	const app = Fastify({ logger: true });
 
 	// CORS設定
-	app.register(cors, {
+	await app.register(cors, {
 		origin: true,
 	});
 
 	// Swagger設定
-	app.register(swagger, {
+	await app.register(swagger, {
 		swagger: {
 			info: {
 				title: 'React TDD Sample API',
@@ -27,7 +27,7 @@ export function buildServer() {
 		},
 	});
 
-	app.register(swaggerUi, {
+	await app.register(swaggerUi, {
 		routePrefix: '/docs',
 	});
 
@@ -54,7 +54,7 @@ export function buildServer() {
 
 // テスト時（importで利用時）はサーバーを起動しない。開発時は常にサーバーを起動。
 if (process.env.NODE_ENV !== 'test') {
-	const app = buildServer();
+	const app = await buildServer();
 	app.listen({ port: 3001, host: '0.0.0.0' })
 		.then(() => {
 			console.log('🚀 Fastifyサーバーがポート3001で起動しました');
