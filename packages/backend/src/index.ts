@@ -52,8 +52,8 @@ export function buildServer() {
 	return app;
 }
 
-// サーバーを直接起動する場合だけlisten
-if (import.meta.main) {
+// テスト時（importで利用時）はサーバーを起動しない。開発時は常にサーバーを起動。
+if (process.env.NODE_ENV !== 'test') {
 	const app = buildServer();
 	app.listen({ port: 3001, host: '0.0.0.0' })
 		.then(() => {
