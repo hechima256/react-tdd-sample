@@ -46,7 +46,7 @@ export async function buildServer() {
 
 	// GET /todos のルート（仮実装）
 	app.get('/todos', async (request, reply) => {
-		return { todos: [] };
+		return [];
 	});
 
 	return app;
