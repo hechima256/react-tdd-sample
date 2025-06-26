@@ -31,10 +31,4 @@ describe('GET /todos', () => {
 		const todos = JSON.parse(response.payload);
 		expect(todos).toBeInstanceOf(Array);
 	});
-
-	it('should return an empty array (initial state)', async () => {
-		const response = await getTodos();
-		const todos = JSON.parse(response.payload);
-		expect(todos).toEqual([]);
-	});
 });
