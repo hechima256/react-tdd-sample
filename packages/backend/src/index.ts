@@ -3,6 +3,7 @@ import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
 import { ResourceResponse } from '@react-tdd-sample/shared/types';
 import Fastify from 'fastify';
+import { TodoService } from './services/todoService';
 
 export async function buildServer() {
 	const app = Fastify({ logger: true });
@@ -46,7 +47,8 @@ export async function buildServer() {
 
 	// GET /todos のルート（仮実装）
 	app.get('/todos', async (request, reply) => {
-		return [];
+		const service = new TodoService();
+		return service.getAllTodos();
 	});
 
 	return app;
