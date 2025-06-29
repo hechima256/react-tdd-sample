@@ -8,7 +8,7 @@ class TestableTodoService extends TodoService {
 	}
 }
 
-describe('TodoService (GETのみ)', () => {
+describe('TodoService (GET)', () => {
 	let service: TestableTodoService;
 
 	beforeEach(() => {
