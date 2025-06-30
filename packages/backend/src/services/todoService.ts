@@ -6,7 +6,7 @@ export class TodoService {
 		{ id: 2, title: 'test2', completed: false },
 		{ id: 3, title: 'test3', completed: false },
 	];
-	private nextId = 1;
+	private nextId = 4;
 
 	getAllTodos(): Todo[] {
 		return this.todos;
