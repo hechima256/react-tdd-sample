@@ -1,13 +1,14 @@
-import { ResourceResponse } from '@react-tdd-sample/shared/src/types/api';
 import { useCallback } from 'react';
 import useSWR from 'swr';
 
 import './App.css';
 
+type Todo = { id: number; title: string; completed: boolean };
+
 function App() {
 	const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 	const fetcher = (url: string) => fetch(`${apiBaseUrl}${url}`).then(res => res.json());
-	const { data, error } = useSWR<ResourceResponse>('/resource', fetcher);
+	const { data: todos, error: todoError } = useSWR<Todo[]>('/todos', fetcher);
 
 	// /health用
 	type HealthResponse = { status: string; timestamp: string };
@@ -24,7 +25,13 @@ function App() {
 	return (
 		<>
 			<div className="card">
-				<pre>{error ? 'エラーが発生しました' : data ? data.text : 'Loading...'}</pre>
+				<pre>
+					{todoError
+						? 'エラーが発生しました'
+						: todos
+							? todos.map(todo => todo.title).join(', ')
+							: 'Loading...'}
+				</pre>
 			</div>
 			<button onClick={handleHealthCheck}>Healthチェック</button>
 			{health && (
