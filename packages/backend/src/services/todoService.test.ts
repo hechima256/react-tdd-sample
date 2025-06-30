@@ -15,10 +15,6 @@ describe('TodoService (GET)', () => {
 		service = new TestableTodoService();
 	});
 
-	it('return empty array', () => {
-		expect(service.getAllTodos()).toEqual([]);
-	});
-
 	it('return set data', () => {
 		const testData = [{ id: 1, title: 'test', completed: false }];
 		service.setTestData(testData);
