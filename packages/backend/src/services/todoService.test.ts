@@ -1,10 +1,16 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { TodoService, type Todo } from './todoService';
+import { InMemoryTodoDB, TodoService, type Todo } from './todoService';
 
 // テスト専用のTodoService拡張
 class TestableTodoService extends TodoService {
+	private testDb: InMemoryTodoDB;
+	constructor() {
+		const db = new InMemoryTodoDB();
+		super(db);
+		this.testDb = db;
+	}
 	setTestData(todos: Todo[]): void {
-		(this as any).todos = todos;
+		this.testDb.setAll(todos);
 	}
 }
 
@@ -13,6 +19,14 @@ describe('TodoService (GET)', () => {
 
 	beforeEach(() => {
 		service = new TestableTodoService();
+	});
+
+	it('return all data initialized', () => {
+		expect(service.getAllTodos()).toEqual([
+			{ id: 1, title: 'test1', completed: false },
+			{ id: 2, title: 'test2', completed: false },
+			{ id: 3, title: 'test3', completed: false },
+		]);
 	});
 
 	it('return set data', () => {
