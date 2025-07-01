@@ -13,7 +13,7 @@ export class InMemoryTodoDB {
 		this.todos = initialTodos;
 	}
 	getAll(): Todo[] {
-		return this.todos;
+		return [...this.todos];
 	}
 	setAll(todos: Todo[]): void {
 		this.todos = todos;
