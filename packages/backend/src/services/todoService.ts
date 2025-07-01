@@ -5,7 +5,7 @@ export class InMemoryTodoDB {
 	private todos: Todo[];
 	constructor(
 		initialTodos: Todo[] = [
-			{ id: 1, title: 'test', completed: false },
+			{ id: 1, title: 'test1', completed: false },
 			{ id: 2, title: 'test2', completed: false },
 			{ id: 3, title: 'test3', completed: false },
 		]
