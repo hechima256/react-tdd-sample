@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { InMemoryTodoDB, TodoService, type Todo } from './todoService';
+import { InMemoryTodoDB, TodoService, type Todo, DEFAULT_TODOS } from './todoService';
 
 // テスト専用のTodoService拡張
 class TestableTodoService extends TodoService {
@@ -22,11 +22,7 @@ describe('TodoService (GET)', () => {
 	});
 
 	it('return all data initialized', () => {
-		expect(service.getAllTodos()).toEqual([
-			{ id: 1, title: 'test1', completed: false },
-			{ id: 2, title: 'test2', completed: false },
-			{ id: 3, title: 'test3', completed: false },
-		]);
+		expect(service.getAllTodos()).toEqual(DEFAULT_TODOS);
 	});
 
 	it('return set data', () => {
