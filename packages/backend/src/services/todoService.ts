@@ -11,7 +11,7 @@ const INITIAL_TODOS: Todo[] = [
 export class InMemoryTodoDB {
 	private todos: Todo[];
 	constructor(initialTodos: Todo[]) {
-		this.todos = initialTodos;
+		this.todos = [...initialTodos];
 	}
 	getAll(): Todo[] {
 		return [...this.todos];
