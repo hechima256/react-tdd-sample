@@ -27,7 +27,7 @@ describe('TodoService (POST)', () => {
 		service = new TodoService(testDb);
 	});
 
-	it('add new todo', () => {
+	it('add new todo to empty todos', () => {
 		const newTodo = { id: 1, title: 'test', completed: false };
 		service.addTodo(newTodo);
 
