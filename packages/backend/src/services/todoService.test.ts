@@ -13,6 +13,7 @@ describe('TodoService (GET)', () => {
 	it('return set data', () => {
 		const testData = [{ id: 1, title: 'test', completed: false }];
 		testDb.setAll(testData);
+
 		expect(service.getAllTodos()).toEqual(testData);
 	});
 });
