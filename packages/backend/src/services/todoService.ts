@@ -29,4 +29,7 @@ export class TodoService {
 	getAllTodos(): Todo[] {
 		return this.db.getAll();
 	}
+	addTodo(todo: Todo): void {
+		this.db.setAll([...this.db.getAll(), todo]);
+	}
 }
