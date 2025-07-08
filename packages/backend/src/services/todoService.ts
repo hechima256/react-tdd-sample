@@ -19,6 +19,9 @@ export class InMemoryTodoDB {
 	setAll(todos: Todo[]): void {
 		this.todos = todos;
 	}
+	add(todo: Todo): void {
+		this.todos.push(todo);
+	}
 }
 
 export class TodoService {
@@ -30,6 +33,6 @@ export class TodoService {
 		return this.db.getAll();
 	}
 	addTodo(todo: Todo): void {
-		this.db.setAll([...this.db.getAll(), todo]);
+		this.db.add(todo);
 	}
 }
