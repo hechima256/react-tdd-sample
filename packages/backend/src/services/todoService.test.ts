@@ -43,4 +43,16 @@ describe('TodoService (POST)', () => {
 
 		expect(service.getAllTodos()).toEqual([initialTodo, newTodo]);
 	});
+
+	it('add todo with duplicate ID allows both todos to exist', () => {
+		const initialTodo = { id: 1, title: 'first todo', completed: false };
+		testDb.setAll([initialTodo]);
+
+		const duplicateIdTodo = { id: 1, title: 'duplicate ID todo', completed: true };
+		service.addTodo(duplicateIdTodo);
+
+		const result = service.getAllTodos();
+		expect(result).toHaveLength(2);
+		expect(result).toEqual([initialTodo, duplicateIdTodo]);
+	});
 });

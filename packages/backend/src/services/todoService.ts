@@ -29,6 +29,11 @@ export class TodoService {
 	getAllTodos(): Todo[] {
 		return this.db.getAll();
 	}
+	/**
+	 * Adds a new todo to the service.
+	 * Note: This method allows duplicate IDs and will append the todo to the existing list.
+	 * @param todo - The todo item to add
+	 */
 	addTodo(todo: Todo): void {
 		this.db.setAll([...this.db.getAll(), todo]);
 	}
