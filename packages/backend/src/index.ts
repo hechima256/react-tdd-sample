@@ -51,6 +51,11 @@ export async function buildServer() {
 		return service.getAllTodos();
 	});
 
+	// POST /todos のルート
+	app.post('/todos', async (request, reply) => {
+		return reply.status(201).send(); // 仮実装
+	});
+
 	return app;
 }
 

@@ -32,3 +32,20 @@ describe('GET /todos', () => {
 		expect(todos).toBeInstanceOf(Array);
 	});
 });
+
+describe('POST /todos', () => {
+	let app: FastifyInstance;
+
+	beforeEach(async () => {
+		app = await buildServer();
+	});
+
+	it('should return 201', async () => {
+		const response = await app.inject({
+			method: 'POST',
+			url: '/todos',
+			body: { id: 1, title: 'test', completed: false },
+		});
+		expect(response.statusCode).toBe(201);
+	});
+});
