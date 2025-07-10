@@ -53,4 +53,18 @@ describe('TodoService (POST)', () => {
 			{ id: 3, title: 'test3', completed: false },
 		]);
 	});
+
+	// 追加したtodoが戻ってくること
+	it('return added todo', () => {
+		const initialTodos = [
+			{ id: 1, title: 'test', completed: false },
+			{ id: 2, title: 'test2', completed: false },
+		];
+		testDb.setAll(initialTodos);
+
+		const newTodo = { id: 3, title: 'test3', completed: false };
+		const result = service.addTodo(newTodo);
+
+		expect(result).toEqual({ id: 3, title: 'test3', completed: false });
+	});
 });

@@ -32,7 +32,8 @@ export class TodoService {
 	getAllTodos(): Todo[] {
 		return this.db.getAll();
 	}
-	addTodo(todo: Todo): void {
+	addTodo(todo: Todo): Todo {
 		this.db.add(todo);
+		return todo;
 	}
 }
