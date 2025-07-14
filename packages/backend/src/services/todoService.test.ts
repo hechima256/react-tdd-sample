@@ -30,8 +30,7 @@ describe('TodoService (POST)', () => {
 	});
 
 	it('add new todo to empty todos', () => {
-		const newTodo = { id: 1, title: 'test', completed: false };
-
+		const newTodo = { title: 'test', completed: false };
 		service.addTodo(newTodo);
 
 		expect(service.getAllTodos()).toEqual([{ id: 1, title: 'test', completed: false }]);
@@ -43,8 +42,8 @@ describe('TodoService (POST)', () => {
 			{ id: 2, title: 'test2', completed: false },
 		];
 		testDb.setAll(initialTodos);
-		const newTodo = { id: 3, title: 'test3', completed: false };
 
+		const newTodo = { title: 'test3', completed: false };
 		service.addTodo(newTodo);
 
 		expect(service.getAllTodos()).toEqual([
@@ -62,7 +61,7 @@ describe('TodoService (POST)', () => {
 		];
 		testDb.setAll(initialTodos);
 
-		const newTodo = { id: 3, title: 'test3', completed: false };
+		const newTodo = { title: 'test3', completed: false };
 		const result = service.addTodo(newTodo);
 
 		expect(result).toEqual({ id: 3, title: 'test3', completed: false });

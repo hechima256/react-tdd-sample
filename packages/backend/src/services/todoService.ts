@@ -1,4 +1,5 @@
 export type Todo = { id: number; title: string; completed: boolean };
+export type NewTodo = { title: string; completed: boolean };
 
 // 初期データを定数として切り出し
 const INITIAL_TODOS: Todo[] = [
@@ -10,17 +11,25 @@ const INITIAL_TODOS: Todo[] = [
 // インメモリDB的なクラス
 export class InMemoryTodoDB {
 	private todos: Todo[];
+	private nextId: number;
+
 	constructor(initialTodos: Todo[]) {
 		this.todos = [...initialTodos];
+		this.nextId = initialTodos.length + 1;
 	}
+
 	getAll(): Todo[] {
 		return [...this.todos];
 	}
 	setAll(todos: Todo[]): void {
 		this.todos = todos;
+		this.nextId = todos.length + 1;
 	}
-	add(todo: Todo): void {
-		this.todos.push(todo);
+	add(todo: NewTodo): Todo {
+		const todoWithId: Todo = { id: this.nextId++, ...todo };
+		this.todos.push(todoWithId);
+		console.log(this.todos);
+		return todoWithId;
 	}
 }
 
@@ -32,8 +41,7 @@ export class TodoService {
 	getAllTodos(): Todo[] {
 		return this.db.getAll();
 	}
-	addTodo(todo: Todo): Todo {
-		this.db.add(todo);
-		return todo;
+	addTodo(todo: NewTodo): Todo {
+		return this.db.add(todo);
 	}
 }
