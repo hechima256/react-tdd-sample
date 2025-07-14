@@ -30,8 +30,7 @@ describe('TodoService (POST)', () => {
 	});
 
 	it('add new todo to empty todos', () => {
-		const newTodo = { id: 1, title: 'test', completed: false };
-
+		const newTodo = { title: 'test', completed: false };
 		service.addTodo(newTodo);
 
 		expect(service.getAllTodos()).toEqual([{ id: 1, title: 'test', completed: false }]);
