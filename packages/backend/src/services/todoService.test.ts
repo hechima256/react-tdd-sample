@@ -61,7 +61,7 @@ describe('TodoService (POST)', () => {
 		];
 		testDb.setAll(initialTodos);
 
-		const newTodo = { id: 3, title: 'test3', completed: false };
+		const newTodo = { title: 'test3', completed: false };
 		const result = service.addTodo(newTodo);
 
 		expect(result).toEqual({ id: 3, title: 'test3', completed: false });
