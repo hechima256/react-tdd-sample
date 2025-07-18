@@ -66,4 +66,10 @@ describe('TodoService (POST)', () => {
 
 		expect(result).toEqual({ id: 3, title: 'test3', completed: false });
 	});
+
+	// 不正な型を渡した場合はエラーを返す
+	it('return error when invalid type is passed', () => {
+		const newTodo = { id: 1, title: 'test', completed: false };
+		expect(() => service.addTodo(newTodo)).toThrow(Error);
+	});
 });

@@ -42,6 +42,11 @@ export class TodoService {
 		return this.db.getAll();
 	}
 	addTodo(todo: NewTodo): Todo {
+		if ('id' in todo) {
+			// 仮実装
+			throw new Error('idを含めることはできません');
+		}
+
 		return this.db.add(todo);
 	}
 }
